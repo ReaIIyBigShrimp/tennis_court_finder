@@ -3,17 +3,33 @@ import Nav from './Nav';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Map from './Map';
 import Court from './Court';
+// import courtData from './tennis_courts.json';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      courts: []
+    }
+  }
+  
+  componentWillMount() {
+    // this.setState({courts: courtData});
+    
+  }
   render() {
+    // console.log(this.state.props);
     return (
       <BrowserRouter>
         <div className="App">
+          <Nav />
           
-            <Nav />
-            <Route exact path='/' component={Map} />
-            <Route path='/court' component={Court} />
-          
+          <Route
+            exact path='/'
+            render={(props) => <Map courts={this.state.courts} />}
+          />
+          <Route path='/court' component={Court} />
         </div>
       </BrowserRouter>
     );

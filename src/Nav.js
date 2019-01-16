@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Nav extends React.Component {
     state = {
@@ -16,7 +16,8 @@ class Nav extends React.Component {
         return (
             <nav className="nav-wrapper green darken-1">
                 <div className="container nav-wrapper">
-                    <a className="brand-logo">Tennis Court Finder</a>
+                    {/* <a className="brand-logo">Tennis Court Finder</a> */}
+                    <Link to="/" className="brand-logo"> Tennis Court Finder</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to="/">Map</Link></li>
                         <li><Link to="/court">Court</Link></li>

@@ -1,9 +1,11 @@
 {
-    "courts": [{
+    "courts": [
+        {
             "geometry": {
                 "coordinates": [53.649331, -1.800321]
             },
             "properties": {
+                "id": 1,
                 "name": "Greenhead Park",
                 "freeAccess": true,
                 "numOfCourts": 9,
@@ -16,6 +18,7 @@
                 "coordinates": [53.751540, -1.877280]
             },
             "properties": {
+                "id": 2,
                 "name": "Beechwood Park",
                 "freeAccess": true,
                 "numOfCourts": 2,
