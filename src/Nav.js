@@ -17,11 +17,11 @@ class Nav extends React.Component {
             <nav className="nav-wrapper green darken-1">
                 <div className="container nav-wrapper">
                     {/* <a className="brand-logo">Tennis Court Finder</a> */}
-                    <Link to="/" className="brand-logo"> Tennis Court Finder</Link>
+                    <Link to="/" className="brand-logo"> Find Courts</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to="/">Map</Link></li>
                         <li><Link to="/court">Court</Link></li>
-                        <li><Link to="/">Map</Link></li>
+                        <li><Link to="/">About</Link></li>
                     </ul>
                 </div>
             </nav>
