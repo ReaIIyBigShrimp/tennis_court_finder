@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      courts: []
+      showCourtDetails: false
     }
   }
   
@@ -18,6 +18,7 @@ class App extends Component {
     // this.setState({courts: courtData});
     
   }
+
   render() {
     // console.log(this.state.props);
     return (
@@ -27,7 +28,7 @@ class App extends Component {
           
           <Route
             exact path='/'
-            render={(props) => <Map courts={this.state.courts} />}
+            render={(props) => <Map />}
           />
           <Route path='/court' component={Court} />
         </div>
