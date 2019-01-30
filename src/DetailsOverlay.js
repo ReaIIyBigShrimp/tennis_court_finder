@@ -23,7 +23,7 @@ function DetailsOverlay({court}) {
                     I am convenient because I require little markup to use effectively.</p>
                 </div>
                 <div className="card-action">
-                    <a style={detailsBtn} className="waves-effect waves-light btn"><i className="material-icons right">chevron_right</i>View More Details</a>
+                    <a style={detailsBtn} className="waves-effect waves-light btn green darken-1"><i className="material-icons right">chevron_right</i>View More Details</a>
                 </div>
             </div>
         </div>

@@ -40,7 +40,8 @@ class Map extends React.Component {
         })
             .then(response => response.json())
             .then(json => {
-                return this.setState({courts: json})
+                this.setState({courts: json});
+                this.addMarkers();
             })
             .catch(error => console.error(error));
       
@@ -80,7 +81,7 @@ class Map extends React.Component {
     render() {
         return (
                 <div className="map-container">
-                    <div id="map" onClick={this.addMarkers}>
+                    <div id="map" onClick={this.handleClick}>
                         <DetailsOverlay court={this.state.activeCourt}/>
                     </div>
                     
