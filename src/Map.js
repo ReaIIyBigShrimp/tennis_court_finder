@@ -62,12 +62,6 @@ class Map extends React.Component {
         // allCourtsGroup.addTo(this.map);
     }
 
-    // TODO
-    // display div with main details over the Leaflet map
-    showDetails = () => {
-
-    }
-
     panToCourtPosition = () => {
         if (this.state.activeCourt != null) {
             this.state.map.setView(this.state.activeCourt.geometry.coordinates);

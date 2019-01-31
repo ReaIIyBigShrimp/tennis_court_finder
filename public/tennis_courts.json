@@ -8,7 +8,7 @@
             "name": "Greenhead Park",
             "freeAccess": true,
             "numOfCourts": 9,
-            "surfaces": ["asphalt"],
+            "surfaces": ["Asphalt"],
             "disabledAccess": true
         }
     },
@@ -21,7 +21,7 @@
             "name": "Beechwood Park",
             "freeAccess": true,
             "numOfCourts": 2,
-            "surfaces": ["asphalt"],
+            "surfaces": ["Asphalt"],
             "disabledAccess": true
         }
     }
