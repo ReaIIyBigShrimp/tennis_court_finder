@@ -7,24 +7,23 @@ class Map extends React.Component {
         super(props);
 
         this.state = {
-            
             mapLoaded: false,
             activeCourt: null
         };
     }
 
     componentDidMount = () => {
-
         let noLocation = () => {
             console.log("No user location found.");
         }
 
         // TO CHANGE (get location)
-        this.map = L.map('map').setView([53.645792, -1.785035], 13);
+        // Remove hard coded location for production
+        this.state.map = L.map('map').setView([53.645792, -1.785035], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
             attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             maxZoom: 18
-        }).addTo(this.map);
+        }).addTo(this.state.map);
 
         
         navigator.geolocation.getCurrentPosition((x) => {
@@ -57,9 +56,8 @@ class Map extends React.Component {
             let courtObj = {};
             courtObj = court;
 
-            let marker = L.marker(court.geometry.coordinates).addTo(this.map);
+            let marker = L.marker(court.geometry.coordinates).addTo(this.state.map);
             marker.addEventListener('click', (court) => {this.setState({activeCourt: courtObj})}, false);
-            
         });
         // allCourtsGroup.addTo(this.map);
     }
@@ -70,21 +68,22 @@ class Map extends React.Component {
 
     }
 
+    panToCourtPosition = () => {
+        if (this.state.activeCourt != null) {
+            this.state.map.setView(this.state.activeCourt.geometry.coordinates);
+        }
+    }
+
     handleClick = (e) => {
-        console.log(e.target.value);
-        let newVal = parseInt(e.target.value);
-        e.target.value = (newVal += 1);
-        
-        console.log(this.state);
+        this.state.activeCourt != null ? this.panToCourtPosition() : console.log("no court")  ;
     }
 
     render() {
         return (
                 <div className="map-container">
-                    <div id="map" onClick={this.handleClick}>
-                        <DetailsOverlay court={this.state.activeCourt}/>
+                    <div id="map">
+                        <DetailsOverlay panToCourtPosition={this.panToCourtPosition} court={this.state.activeCourt}/>
                     </div>
-                    
                 </div>
         )
     }
