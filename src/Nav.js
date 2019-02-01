@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
 
 class Nav extends React.Component {
     state = {
@@ -12,19 +16,20 @@ class Nav extends React.Component {
         });
     } */
 
+
     render() {
         return (
-            <nav className="nav-wrapper green darken-1">
-                <div className="container nav-wrapper">
-                    {/* <a className="brand-logo">Tennis Court Finder</a> */}
-                    <Link to="/" className="brand-logo"> Find Courts</Link>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><Link to="/">Map</Link></li>
-                        <li><Link to="/court">Court</Link></li>
-                        <li><Link to="/">About</Link></li>
-                    </ul>
-                </div>
-            </nav>
+            <React.Fragment>
+                <AppBar position="static" color="primary" title="Find Courts">
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit">
+                            Find Courts
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+               
+            </React.Fragment>
+            
         )
     }
 }

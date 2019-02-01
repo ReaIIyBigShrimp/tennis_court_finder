@@ -1,41 +1,68 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import { Typography } from '@material-ui/core';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+
 
 const rowStyle = {
     zIndex: 500,
     position: 'absolute',
     bottom: '0px'
 }
-
-const detailsBtn = {
-    color: '#f2f2f2'
-}
-
 const card = {
-    minWidth: '400px'
+    minWidth: '400px',
+    position: 'absolute',
+    zIndex: 500,
+    bottom: '20px',
+    left: '5px'
 }
 
-const iconBtn = {
-    marginLeft: 0
-}
-
-function DetailsOverlay({court, panToCourtPosition}) {
+function DetailsOverlay(props) {
+    
+    const {court, panToCourtPosition} = props;
     console.log(court);
-    console.log();
+    let courtSurfaces;
+    if (court != null) {
+        console.log(court.properties.surfaces);
+        console.log();
+        courtSurfaces = court.properties.surfaces[0];
+    }
+
   return (
-    <div style={rowStyle} className="row">
-        <div className="col s12 m6">
-            <div style={card} className="card blue-grey darken-1">
-                <div className="card-content white-text">
-                    <span className="card-title">{court != null ? court.properties.name : 'Select a court'}</span>
-                    <p>{court != null ? "Number of courts: " + court.properties.numOfCourts : ''}</p>
-                </div>
-                <div className="card-action">
-                    <a style={detailsBtn} className="waves-effect waves-light btn green darken-1"><i className="material-icons right">chevron_right</i>View More Details</a>
-                    <a onClick={panToCourtPosition} style={detailsBtn} className="waves-effect waves-light btn green darken-1"><i style={iconBtn} className="material-icons right">location_searching</i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+      <React.Fragment>
+          <Card style={card}>
+            <CardContent>
+                <Typography variant="h4" color="textSecondary" gutterBottom>
+                    {court != null ? court.properties.name : 'Select a court'}
+                </Typography>
+                <Typography color="textSecondary" gutterBottom>
+                    {court != null ? "Number of courts: " + court.properties.numOfCourts : ''}
+                </Typography>
+                <Typography color="textSecondary" gutterBottom>
+                    {court != null ? "Surface(s): " + courtSurfaces : ''}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button variant="contained" color="primary">
+                    <Typography variant="button" color="inherit">
+                        View More Details
+                    </Typography>
+                    <Icon>chevron_right</Icon>
+                </Button>
+                <Button variant="contained" color="secondary" onClick={panToCourtPosition}>
+                    <Icon onClick={panToCourtPosition}>location_searching</Icon>
+                </Button>
+            </CardActions>
+          </Card>
+        
+                        
+                        
+      </React.Fragment>
+    
   )
 }
 
