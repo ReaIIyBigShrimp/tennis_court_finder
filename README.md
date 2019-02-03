@@ -1,14 +1,14 @@
-Current functionality:
+Current functionality:<br>
 
--Map centres on location data
--Tennis court markers viewable on map
--Selecting court marker for details preview
--Pan to location of selected court
+-Map centres on location data<br>
+-Tennis court markers viewable on map<br>
+-Selecting court marker for details preview<br>
+-Pan to location of selected court<br>
 
-In progress:
+In progress:<br>
 
--Details page for expanded court details view
--Search filter for court map markers
+-Details page for expanded court details view<br>
+-Search filter for court map markers<br>
 
 ###
 
