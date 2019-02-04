@@ -47,9 +47,10 @@ function DetailsOverlay(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" href="http://maps.google.com/maps?daddr=53.751540,-1.877280&amp;ll=">
                     <Typography variant="button" color="inherit">
                         View More Details
+                        
                     </Typography>
                     <Icon>chevron_right</Icon>
                 </Button>

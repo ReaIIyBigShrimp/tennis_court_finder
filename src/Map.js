@@ -19,11 +19,19 @@ class Map extends React.Component {
 
         // TO CHANGE (get location)
         // Remove hard coded location for production
-        this.state.map = L.map('map').setView([53.645792, -1.785035], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+        this.setState({
+            map: L.map('map').setView([53.645792, -1.785035], 13)
+        }, () => {
+            L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+                attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                maxZoom: 18
+            }).addTo(this.state.map);
+        });
+        // this.state.map = L.map('map').setView([53.645792, -1.785035], 13);
+        /* L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
             attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             maxZoom: 18
-        }).addTo(this.state.map);
+        }).addTo(this.state.map); */
 
         
         navigator.geolocation.getCurrentPosition((x) => {
