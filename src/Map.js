@@ -27,17 +27,14 @@ class Map extends React.Component {
                 maxZoom: 18
             }).addTo(this.state.map);
         });
-        // this.state.map = L.map('map').setView([53.645792, -1.785035], 13);
-        /* L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
-            attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            maxZoom: 18
-        }).addTo(this.state.map); */
+        
 
         
         navigator.geolocation.getCurrentPosition((x) => {
             console.log(x);
         }, noLocation);
         
+        // Fetch JSON court data
         fetch('./tennis_courts.json',
         {
             headers : {
@@ -47,14 +44,12 @@ class Map extends React.Component {
         })
             .then(response => response.json())
             .then(json => {
+                // Adds court data to state
                 this.setState({courts: json});
                 this.addMarkers();
             })
             .catch(error => console.error(error));
-      
     }
-
-
 
     addMarkers = () => {
         /* let courtMarkers = this.state.courts.map((x) => {return L.marker(x.geometry.coordinates)});
@@ -70,6 +65,7 @@ class Map extends React.Component {
         // allCourtsGroup.addTo(this.map);
     }
 
+    // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {
         if (this.state.activeCourt != null) {
             this.state.map.setView(this.state.activeCourt.geometry.coordinates);

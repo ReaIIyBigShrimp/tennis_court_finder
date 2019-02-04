@@ -26,10 +26,14 @@ function DetailsOverlay(props) {
     const {court, panToCourtPosition} = props;
     console.log(court);
     let courtSurfaces;
+    let courtLatLon;
+    let courtUrl;
     if (court != null) {
         console.log(court.properties.surfaces);
-        console.log();
+        // console.log();
         courtSurfaces = court.properties.surfaces[0];
+        courtLatLon = court.geometry.coordinates;
+        courtUrl = 'http://maps.google.com/maps?daddr=' + courtLatLon[0] + ',' + courtLatLon[1] + '&amp;ll=';
     }
 
   return (
@@ -47,10 +51,10 @@ function DetailsOverlay(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="contained" color="primary" href="http://maps.google.com/maps?daddr=53.751540,-1.877280&amp;ll=">
+                
+                <Button variant="contained" color="primary" href={courtUrl}>
                     <Typography variant="button" color="inherit">
-                        View More Details
-                        
+                        Get Directions
                     </Typography>
                     <Icon>chevron_right</Icon>
                 </Button>
