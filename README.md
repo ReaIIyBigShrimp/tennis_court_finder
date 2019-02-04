@@ -4,6 +4,7 @@ Current functionality:<br>
 -Tennis court markers viewable on map<br>
 -Selecting court marker for details preview<br>
 -Pan to location of selected court<br>
+-Directions for selected court<br>
 
 In progress:<br>
 
