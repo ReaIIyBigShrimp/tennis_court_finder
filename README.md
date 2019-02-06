@@ -3,6 +3,7 @@ Current functionality:<br>
 -Map centres on location data<br>
 -Tennis court markers viewable on map<br>
 -Selecting court marker for details preview<br>
+-Preview of selected court details
 -Pan to location of selected court<br>
 -Directions for selected court<br>
 
