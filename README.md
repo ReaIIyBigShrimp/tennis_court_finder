@@ -1,3 +1,19 @@
+Current functionality:<br>
+
+-Map centres on location data<br>
+-Tennis court markers viewable on map<br>
+-Selecting court marker for details preview<br>
+-Preview of selected court details<br>
+-Pan to location of selected court<br>
+-Directions for selected court<br>
+
+In progress:<br>
+
+-Details page for expanded court details view<br>
+-Search filter for court map markers<br>
+
+###
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
