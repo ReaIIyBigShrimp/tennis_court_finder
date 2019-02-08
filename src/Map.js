@@ -7,7 +7,6 @@ class Map extends React.Component {
         super(props);
 
         this.state = {
-            mapLoaded: false,
             activeCourt: null
         };
     }

@@ -9,8 +9,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#00695c' },
-    secondary: { main: '#7cb342' },
+    primary: { main: '#006064' },
+    secondary: { main: '#43a047' },
   },
   typography: { useNextVariants: true },
 });
@@ -20,7 +20,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      showCourtDetails: false
+      showCourtDetails: false,
+
     }
   }
 
