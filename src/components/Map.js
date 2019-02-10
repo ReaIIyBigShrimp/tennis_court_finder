@@ -1,13 +1,14 @@
 import React from 'react';
 import L from 'leaflet';
 import DetailsOverlay from './DetailsOverlay';
+import {connect} from 'react-redux';
 
 class Map extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            activeCourt: null
+            test: null
         };
     }
 
@@ -15,7 +16,6 @@ class Map extends React.Component {
         let noLocation = () => {
             console.log("No user location found.");
         }
-
         // TO CHANGE (get location)
         // Remove hard coded location for production
         this.setState({
@@ -26,8 +26,6 @@ class Map extends React.Component {
                 maxZoom: 18
             }).addTo(this.state.map);
         });
-        
-
         
         navigator.geolocation.getCurrentPosition((x) => {
             console.log(x);
@@ -45,45 +43,55 @@ class Map extends React.Component {
             .then(json => {
                 // Adds court data to state
                 this.setState({courts: json});
+
                 this.addMarkers();
             })
             .catch(error => console.error(error));
     }
+    
 
     addMarkers = () => {
-        /* let courtMarkers = this.state.courts.map((x) => {return L.marker(x.geometry.coordinates)});
-        let allCourtsGroup = L.layerGroup(courtMarkers); */
-
         this.state.courts.forEach(court => {
             let courtObj = {};
             courtObj = court;
 
             let marker = L.marker(court.geometry.coordinates).addTo(this.state.map);
-            marker.addEventListener('click', (court) => {this.setState({activeCourt: courtObj})}, false);
+            marker.addEventListener('click', (court) => {this.props.setActiveCourt(courtObj)}, false);
         });
-        // allCourtsGroup.addTo(this.map);
     }
 
     // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {
-        if (this.state.activeCourt != null) {
-            this.state.map.setView(this.state.activeCourt.geometry.coordinates);
+        if (this.props.courts.activeCourt != null) {
+            this.state.map.setView(this.props.courts.activeCourt.geometry.coordinates);
         }
     }
 
-    handleClick = (e) => {
-        this.state.activeCourt != null ? this.panToCourtPosition() : console.log("no court")  ;
-    }
-
     render() {
+        console.log(this.props);
+        console.log(this.props.courts.activeCourt);
         return (
-                <div className="map-container">
-                    <div id="map">
-                        <DetailsOverlay panToCourtPosition={this.panToCourtPosition} court={this.state.activeCourt}/>
-                    </div>
+            <div className="map-container">
+                <div id="map">
+                    <DetailsOverlay panToCourtPosition={this.panToCourtPosition} court={this.state.activeCourt}/>
                 </div>
+            </div>
         )
     }
 }
 
-export default Map;
+const mapStateToProps = (state) => {
+    return {
+        courts: state.courts,
+        activeCourt: state.activeCourt
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

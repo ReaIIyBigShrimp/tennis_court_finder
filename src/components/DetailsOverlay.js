@@ -5,14 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { Typography } from '@material-ui/core';
-import blueGrey from '@material-ui/core/colors/blueGrey';
+import courts from '../reducers/courts';
+// import blueGrey from '@material-ui/core/colors/blueGrey';
 
-
-const rowStyle = {
-    zIndex: 500,
-    position: 'absolute',
-    bottom: '0px'
-}
 const card = {
     minWidth: '400px',
     position: 'absolute',
@@ -23,16 +18,15 @@ const card = {
 
 function DetailsOverlay(props) {
     
-    const {court, panToCourtPosition} = props;
-    console.log(court);
+    const {panToCourtPosition} = props;
+    console.log(courts.activeCourt);
     let courtSurfaces;
     let courtLatLon;
     let courtUrl;
-    if (court != null) {
-        console.log(court.properties.surfaces);
-        // console.log();
-        courtSurfaces = court.properties.surfaces[0];
-        courtLatLon = court.geometry.coordinates;
+    if (courts.activeCourt != null) {
+        console.log(courts.activeCourt.properties.surfaces);
+        courtSurfaces = courts.activeCourt.properties.surfaces[0];
+        courtLatLon = courts.activeCourt.geometry.coordinates;
         courtUrl = 'http://maps.google.com/maps?daddr=' + courtLatLon[0] + ',' + courtLatLon[1] + '&amp;ll=';
     }
 
@@ -41,13 +35,14 @@ function DetailsOverlay(props) {
           <Card style={card}>
             <CardContent>
                 <Typography variant="h4" color="textSecondary" gutterBottom>
-                    {court != null ? court.properties.name : 'Select a court'}
+                    {courts.activeCourt != null ? courts.activeCourt.properties.name : 'Select a court'}
                 </Typography>
                 <Typography color="textSecondary" gutterBottom>
-                    {court != null ? "Number of courts: " + court.properties.numOfCourts : ''}
+                
+                    {courts.activeCourt != null ? "Number of courts: " + courts.activeCourt.properties.numOfCourts : ''}
                 </Typography>
                 <Typography color="textSecondary" gutterBottom>
-                    {court != null ? "Surface(s): " + courtSurfaces : ''}
+                    {courts.activeCourt != null ? "Surface(s): " + courtSurfaces : ''}
                 </Typography>
             </CardContent>
             <CardActions>
