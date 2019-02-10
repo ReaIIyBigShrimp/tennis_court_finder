@@ -31,16 +31,16 @@ const styles = theme => ({
 
 const ranges = [
     {
-      value: '0-20',
-      label: '0 to 20',
+      value: 5,
+      label: '< 5',
     },
     {
-      value: '21-50',
-      label: '21 to 50',
+      value: 10,
+      label: '< 10',
     },
     {
-      value: '51-100',
-      label: '51 to 100',
+      value: 20,
+      label: '< 20',
     },
   ];
 
