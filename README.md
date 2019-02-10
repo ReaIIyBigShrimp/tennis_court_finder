@@ -1,3 +1,10 @@
+Allows users find nearby tennis courts using their geolocation data.<br>
+
+Technologies used:<br>
+React<br>
+Redux<br>
+Leaflet(map library)<br>
+
 Current functionality:<br>
 
 -Map centres on location data<br>
