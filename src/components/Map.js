@@ -11,7 +11,6 @@ class Map extends React.Component {
             test: null
         };
     }
-
     componentDidMount = () => {
         let noLocation = () => {
             console.log("No user location found.");
@@ -26,7 +25,6 @@ class Map extends React.Component {
                 maxZoom: 18
             }).addTo(this.state.map);
         });
-        
         navigator.geolocation.getCurrentPosition((x) => {
             console.log(x);
         }, noLocation);
@@ -48,8 +46,6 @@ class Map extends React.Component {
             })
             .catch(error => console.error(error));
     }
-    
-
     addMarkers = () => {
         this.state.courts.forEach(court => {
             let courtObj = {};
@@ -59,14 +55,12 @@ class Map extends React.Component {
             marker.addEventListener('click', (court) => {this.props.setActiveCourt(courtObj)}, false);
         });
     }
-
     // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {
         if (this.props.courts.activeCourt != null) {
             this.state.map.setView(this.props.courts.activeCourt.geometry.coordinates);
         }
     }
-
     render() {
         console.log(this.props);
         console.log(this.props.courts.activeCourt);
@@ -89,7 +83,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) }
+        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) },
+        addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })}
     }
 }
 

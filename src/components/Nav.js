@@ -33,7 +33,7 @@ function Nav(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Find Local Tennis Courts
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" href="http://github.com/reaiiybigshrimp/tennis_court_finder">Source Code(GitHub)</Button>
         </Toolbar>
         
       </AppBar>

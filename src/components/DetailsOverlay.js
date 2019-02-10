@@ -7,6 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import { Typography } from '@material-ui/core';
 import courts from '../reducers/courts';
 // import blueGrey from '@material-ui/core/colors/blueGrey';
+import {connect} from 'react-redux';
 
 const card = {
     minWidth: '400px',
@@ -17,7 +18,7 @@ const card = {
 }
 
 function DetailsOverlay(props) {
-    
+    const {courts} = props;
     const {panToCourtPosition} = props;
     console.log(courts.activeCourt);
     let courtSurfaces;
@@ -35,6 +36,7 @@ function DetailsOverlay(props) {
           <Card style={card}>
             <CardContent>
                 <Typography variant="h4" color="textSecondary" gutterBottom>
+                    {courts.activeCourt != null ? console.log(courts.activeCourt.properties.name) : console.log("Nothing")}
                     {courts.activeCourt != null ? courts.activeCourt.properties.name : 'Select a court'}
                 </Typography>
                 <Typography color="textSecondary" gutterBottom>
@@ -46,7 +48,7 @@ function DetailsOverlay(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                
+
                 <Button variant="contained" color="primary" href={courtUrl}>
                     <Typography variant="button" color="inherit">
                         Get Directions
@@ -58,13 +60,23 @@ function DetailsOverlay(props) {
                 </Button>
             </CardActions>
           </Card>
-        
-                        
-                        
       </React.Fragment>
-    
   )
 }
 
-export default DetailsOverlay;
+const mapStateToProps = (state) => {
+    return {
+        courts: state.courts,
+        activeCourt: state.activeCourt
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) },
+        addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DetailsOverlay);
 
