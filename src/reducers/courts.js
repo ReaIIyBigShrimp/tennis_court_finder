@@ -8,7 +8,6 @@ const initialState = {
 export default function courts(state = initialState, action) {
     switch (action.type) {
       case ActionTypes.ADD_COURTS:
-
         console.log(action);
         return [
           ...state,

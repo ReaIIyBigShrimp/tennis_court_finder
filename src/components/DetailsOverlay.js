@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { Typography } from '@material-ui/core';
-import courts from '../reducers/courts';
 // import blueGrey from '@material-ui/core/colors/blueGrey';
 import {connect} from 'react-redux';
 

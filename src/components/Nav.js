@@ -28,7 +28,6 @@ function Nav(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          
           <SideNav/>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Find Local Tennis Courts
