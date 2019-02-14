@@ -9,12 +9,11 @@ export default function courts(state = initialState, action) {
     switch (action.type) {
       case ActionTypes.ADD_COURTS:
         console.log(action);
-        return [
+        return {
           ...state,
-          {
             courts: action.payload
-          }
-        ]
+          
+        }
       case ActionTypes.SET_ACTIVE_COURT:
 
         console.log(action);
