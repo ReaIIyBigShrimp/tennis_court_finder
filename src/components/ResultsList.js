@@ -30,24 +30,23 @@ const ResultsList = (props) => {
         <CardMedia
           className={classes.media}
           image="https://placeimg.com/640/480/any"
-          title="Contemplative Reptile"
+          title="Court"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            [Court title]
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          View on Map
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Favourite
         </Button>
       </CardActions>
     </Card>
