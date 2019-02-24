@@ -13,6 +13,7 @@ Current functionality:<br>
 -Preview of selected court details<br>
 -Pan to location of selected court<br>
 -Directions for selected court<br>
+-Court filters for cost and distance<br>
 
 In progress:<br>
 
