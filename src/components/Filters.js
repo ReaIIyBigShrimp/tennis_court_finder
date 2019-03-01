@@ -9,7 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 // Submit button
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
 // Dropdown menu filter
@@ -18,7 +18,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import MenuItem from '@material-ui/core/MenuItem';
 
 //Grid
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
+
+import {connect} from 'react-redux';
 
 const styles = theme => ({
   root: {
@@ -70,10 +72,9 @@ class Filters extends React.Component {
 
   render() {
     const { classes } = this.props;
+    console.log(this.props);
 
     return (
-      
-        
           <div className={classes.root}>
           <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel component="legend">Court Cost</FormLabel>
@@ -110,11 +111,15 @@ class Filters extends React.Component {
                 Apply Filters
             </Button>
           </FormControl>
-          
         </div>
-        
-      
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+      courtCost: state.formFilters.courtCost,
+      courtDistance: state.formFilters.courtDistance
   }
 }
 
@@ -122,4 +127,4 @@ Filters.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Filters);
+export default connect(mapStateToProps)(withStyles(styles)(Filters));

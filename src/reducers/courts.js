@@ -1,9 +1,9 @@
 import ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
-        courts: [],
-        activeCourt: null
-    }
+    courts: [],
+    activeCourt: null
+}
 
 export default function courts(state = initialState, action) {
     switch (action.type) {
@@ -12,7 +12,6 @@ export default function courts(state = initialState, action) {
         return {
           ...state,
             courts: action.payload
-          
         }
       case ActionTypes.SET_ACTIVE_COURT:
 
