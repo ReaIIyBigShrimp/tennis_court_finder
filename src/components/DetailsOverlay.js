@@ -16,6 +16,10 @@ const card = {
     left: '5px'
 }
 
+const panelLink = {
+    color: '#ffffff'
+}
+
 function DetailsOverlay(props) {
     const {courts} = props;
     const {panToCourtPosition} = props;
@@ -48,7 +52,7 @@ function DetailsOverlay(props) {
             </CardContent>
             <CardActions>
 
-                <Button variant="contained" color="primary" href={courtUrl}>
+                <Button variant="contained" color="primary" href={courtUrl} style={panelLink}>
                     <Typography variant="button" color="inherit">
                         Get Directions
                     </Typography>
