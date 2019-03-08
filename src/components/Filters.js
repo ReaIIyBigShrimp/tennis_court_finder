@@ -58,16 +58,24 @@ const ranges = [
 
 class Filters extends React.Component {
   state = {
-    costValue: 'all',
+    courtCost: 'all',
     courtDistance: '0-20'
   };
 
   handleChange = event => {
-    this.setState({ costValue: event.target.value }, () => {console.log(this.state.costValue)});
+    this.setState({ courtCost: event.target.value }, () => {
+      //console.log(this.state.costValue);
+      this.props.updateFilters(this.state);
+
+    });
+    //this.props.updateFilters(this.state);
   };
 
   handleDistanceChange = prop => event => {
-    this.setState({ [prop]: event.target.value }, () => {console.log(this.state.courtDistance)});
+    this.setState({ [prop]: event.target.value }, () => {
+      //console.log(this.state.courtDistance);
+      this.props.updateFilters(this.state);
+    });
   };
 
   render() {
@@ -127,4 +135,11 @@ Filters.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Filters));
+const mapDispatchToProps = (dispatch) => {
+  return {
+      updateFilters: (filterValues) => { dispatch({type: 'UPDATE_FILTERS', payload: filterValues}) },
+      addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Filters));
