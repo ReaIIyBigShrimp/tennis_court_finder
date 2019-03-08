@@ -78,6 +78,25 @@ class Filters extends React.Component {
     });
   };
 
+  applyFilters = () => {
+
+    
+    // get user location
+    let noLocation = () => {
+      console.log("No user location found.");
+    }
+    navigator.geolocation.getCurrentPosition((x) => {
+      console.log(x);
+    }, noLocation);
+    // filters courts with matching criteria to:
+    // Court Cost
+    // &
+    // Court Distance
+
+
+
+  }
+
   render() {
     const { classes } = this.props;
     console.log(this.props);
@@ -115,7 +134,7 @@ class Filters extends React.Component {
                 </MenuItem>
                 ))}
             </TextField>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button variant="contained" color="primary" fullWidth onClick={this.applyFilters}>
                 Apply Filters
             </Button>
           </FormControl>
