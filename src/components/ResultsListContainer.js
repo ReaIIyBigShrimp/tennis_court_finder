@@ -9,7 +9,8 @@ class ResultsListContainer extends Component {
     super(props);
 
     this.state = {
-      courts: []
+      courts: [],
+      filteredCourts: []
     };
   }
 
@@ -34,7 +35,7 @@ class ResultsListContainer extends Component {
 
   render() {
     return (
-      <ResultsList />
+      <ResultsList courtsToShow={this.state.filteredCourts}/>
     )
   }
 }
@@ -42,7 +43,8 @@ class ResultsListContainer extends Component {
 const mapStateToProps = (state) => {
   return {
       courts: state.courts,
-      activeCourt: state.activeCourt
+      activeCourt: state.activeCourt,
+      filteredCourts: state.courts.filteredCourts
   }
 }
 

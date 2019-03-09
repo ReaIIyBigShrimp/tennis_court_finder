@@ -15,6 +15,7 @@ import {connect} from 'react-redux';
 const styles = {
   card: {
     maxWidth: 345,
+    margin: '0px 0px 10px 0px'
   },
   media: {
     height: 140,
@@ -23,7 +24,7 @@ const styles = {
 
 const ResultsList = (props) => {
   const { classes } = props;
-  console.log(props.courts.courts);
+  console.log(props.courtsToShow);
 
   let courts = props.filteredCourts;
   // map over filteredCourts
@@ -31,7 +32,7 @@ const ResultsList = (props) => {
   let courtsList;
 
   if(courts.length < 1) {
-    courtsList = <Typography component="p">Select 'Apply Filters' to find your nearest tennis courts.</Typography>
+    courtsList = <Typography component="p">Select 'Apply Filters' to find your nearest tennis courts.</Typography>;
   } else {
     courtsList = courts.map(court => {
       return (
@@ -44,10 +45,13 @@ const ResultsList = (props) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                [Court title]
+                {court.properties.name}
               </Typography>
-              <Typography component="p">
+              <Typography gutterBottom component="p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </Typography>
+              <Typography gutterBottom component="p">
+                Numbers of courts: {court.properties.numOfCourts}
               </Typography>
             </CardContent>
           </CardActionArea>

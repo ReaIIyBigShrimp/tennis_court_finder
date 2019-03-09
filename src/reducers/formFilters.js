@@ -10,6 +10,7 @@ export default function courts(state = initialState, action) {
       case ActionTypes.UPDATE_FILTERS:
         //console.log(action.payload);
         return {
+          ...state,
           ...action.payload
         }
       default:

@@ -103,12 +103,13 @@ class Filters extends React.Component {
 
     console.log("Filtered list: ");
     console.log(newCourtsList);
+    this.props.filterCourts(newCourtsList);
 
   }
 
   render() {
     const { classes } = this.props;
-    console.log(this.props);
+    //console.log(this.props);
 
     return (
           <div className={classes.root}>
