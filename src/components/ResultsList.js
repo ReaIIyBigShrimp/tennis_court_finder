@@ -23,6 +23,12 @@ const styles = {
 
 const ResultsList = (props) => {
   const { classes } = props;
+
+  // let courtsList = [];
+
+  const {filteredCourts} = props;
+  console.log(filteredCourts);
+  console.log(props);
   
   return (
     <Card className={classes.card}>
@@ -58,9 +64,13 @@ ResultsList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state.courts);
+  console.log(state.courts.courts);
+
     return {
         courts: state.courts,
-        activeCourt: state.activeCourt
+        filteredCourts: state.courts.filteredCourts,
+        activeCourt: state.courts.activeCourt
     }
 }
 
