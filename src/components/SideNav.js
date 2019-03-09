@@ -11,6 +11,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Icon, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import {Link, NavLink} from 'react-router-dom';
+
 const styles = {
   list: {
     width: 250,
@@ -44,11 +46,11 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-            <ListItem button component="a" href="/">
+            <ListItem button component={Link} to="/">
               <ListItemIcon><Icon>search</Icon></ListItemIcon>
               <ListItemText primary="Court Search" />
             </ListItem>
-            <ListItem button component="a" href="./map">
+            <ListItem button component={Link} to="./map">
               <ListItemIcon><Icon>place</Icon></ListItemIcon>
               <ListItemText primary="Map View"></ListItemText>
             </ListItem>

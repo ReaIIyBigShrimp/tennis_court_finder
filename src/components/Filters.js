@@ -88,15 +88,12 @@ class Filters extends React.Component {
     navigator.geolocation.getCurrentPosition((x) => {
       console.log(x);
     }, noLocation);
-    // filters courts with matching criteria to:
-    // Court Cost
-    // &
-    // Court Distance
+    
     let {courtCost, courtDistance, courts} = this.props;
 
-    console.log(courtCost);
-    console.log(courtDistance);
-    console.log(courts);
+    //console.log(courtCost);
+    //console.log(courtDistance);
+    //console.log(courts);
 
     let newCourtsList = [];
 
@@ -121,7 +118,7 @@ class Filters extends React.Component {
               aria-label="Court Cost"
               name="Court Cost"
               className={classes.group}
-              value={this.state.costValue}
+              value={this.props.courtCost}
               onChange={this.handleChange}
             >
               <FormControlLabel value="free" control={<Radio />} label="Free Courts" />
@@ -134,7 +131,7 @@ class Filters extends React.Component {
                 className={classes.padBottom}
                 variant="outlined"
                 label="Distance"
-                value={this.state.courtDistance}
+                value={this.props.courtDistance}
                 onChange={this.handleDistanceChange('courtDistance')}
                 InputProps={{
                 startAdornment: <InputAdornment position="start">Miles</InputAdornment>,
