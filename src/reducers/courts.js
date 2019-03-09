@@ -2,7 +2,7 @@ import ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
     courts: [],
-    filteredCourts: [1,2,3],
+    filteredCourts: [],
     activeCourt: null
 }
 
@@ -15,7 +15,11 @@ export default function courts(state = initialState, action) {
             courts: action.payload
         }
       case ActionTypes.FILTER_COURTS:
-        return state
+        return {
+          ...state,
+          filteredCourts: action.payload
+        }
+        
       case ActionTypes.SET_ACTIVE_COURT:
 
         console.log(action);

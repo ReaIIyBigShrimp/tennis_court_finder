@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -23,39 +23,51 @@ const styles = {
 
 const ResultsList = (props) => {
   const { classes } = props;
+  console.log(props.courts.courts);
 
-  // let courtsList = [];
+  let courts = props.filteredCourts;
+  // map over filteredCourts
 
-  const {filteredCourts} = props;
-  console.log(filteredCourts);
-  console.log(props);
+  let courtsList;
+
+  if(courts.length < 1) {
+    courtsList = <Typography component="p">Select 'Apply Filters' to find your nearest tennis courts.</Typography>
+  } else {
+    courtsList = courts.map(court => {
+      return (
+        <Card className={classes.card} key={court.properties.id}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="https://placeimg.com/640/480/any"
+              title="Court"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                [Court title]
+              </Typography>
+              <Typography component="p">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              View on Map
+            </Button>
+            <Button size="small" color="primary">
+              Favourite
+            </Button>
+          </CardActions>
+        </Card>
+      )
+    });
+  }
   
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://placeimg.com/640/480/any"
-          title="Court"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            [Court title]
-          </Typography>
-          <Typography component="p">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          View on Map
-        </Button>
-        <Button size="small" color="primary">
-          Favourite
-        </Button>
-      </CardActions>
-    </Card>
+    <Fragment>
+      {courtsList}
+    </Fragment>
   );
 }
 
@@ -64,8 +76,8 @@ ResultsList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.courts);
-  console.log(state.courts.courts);
+  //console.log(state.courts);
+  //console.log(state.courts.courts);
 
     return {
         courts: state.courts,
@@ -76,8 +88,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) },
-        addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })}
+        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) }
     }
 }
 

@@ -92,8 +92,20 @@ class Filters extends React.Component {
     // Court Cost
     // &
     // Court Distance
+    let {courtCost, courtDistance, courts} = this.props;
 
+    console.log(courtCost);
+    console.log(courtDistance);
+    console.log(courts);
 
+    let newCourtsList = [];
+
+    newCourtsList = courts.filter(court => {
+      return court.properties.freeAccess === true && courtCost === 'free';
+    });
+
+    console.log("Filtered list: ");
+    console.log(newCourtsList);
 
   }
 
@@ -146,7 +158,8 @@ class Filters extends React.Component {
 const mapStateToProps = (state) => {
   return {
       courtCost: state.formFilters.courtCost,
-      courtDistance: state.formFilters.courtDistance
+      courtDistance: state.formFilters.courtDistance,
+      courts: state.courts.courts
   }
 }
 
@@ -157,7 +170,8 @@ Filters.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   return {
       updateFilters: (filterValues) => { dispatch({type: 'UPDATE_FILTERS', payload: filterValues}) },
-      addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })}
+      addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })},
+      filterCourts: (filteredCourts) => {dispatch({type: 'FILTER_COURTS', payload: filteredCourts})}
   }
 }
 
