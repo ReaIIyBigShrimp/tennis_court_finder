@@ -79,8 +79,6 @@ class Filters extends React.Component {
   };
 
   applyFilters = () => {
-
-    
     // get user location
     let noLocation = () => {
       console.log("No user location found.");
@@ -98,7 +96,16 @@ class Filters extends React.Component {
     let newCourtsList = [];
 
     newCourtsList = courts.filter(court => {
-      return court.properties.freeAccess === true && courtCost === 'free';
+
+      let isMatch = false;
+
+      if (court.properties.freeAccess === true && courtCost === 'free') {
+        isMatch = true;
+      }
+      if (court.properties.freeAccess ===  true && courtCost === 'all') {
+        isMatch = true;
+      }
+      return isMatch === true;
     });
 
     console.log("Filtered list: ");
