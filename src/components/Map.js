@@ -63,8 +63,8 @@ class Map extends React.Component {
     }
     // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {
-        if (this.props.courts.activeCourt != null) {
-            this.state.map.setView(this.props.courts.activeCourt.geometry.coordinates);
+        if (this.props.activeCourt != null) {
+            this.state.map.setView(this.props.activeCourt.geometry.coordinates);
         }
     }
     render() {
