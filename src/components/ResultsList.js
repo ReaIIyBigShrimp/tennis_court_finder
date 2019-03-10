@@ -24,10 +24,15 @@ const styles = {
 
 const ResultsList = (props) => {
   const { classes } = props;
-  console.log(props.courtsToShow);
+
+  let showCourt = (court) => {
+    console.log(court);
+  }
 
   let courts = props.filteredCourts;
   // map over filteredCourts
+
+  console.log(props.setActiveCourt);
 
   let courtsList;
 
@@ -35,6 +40,7 @@ const ResultsList = (props) => {
     courtsList = <Typography component="p">Select 'Apply Filters' to find your nearest tennis courts.</Typography>;
   } else {
     courtsList = courts.map(court => {
+      console.log(props.setActiveCourt);
       return (
         <Card className={classes.card} key={court.properties.id}>
           <CardActionArea>
@@ -56,8 +62,8 @@ const ResultsList = (props) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
-              View on Map
+            <Button size="small" color="primary" onClick={() => {props.setActiveCourt(court)} }>
+              View on Map 
             </Button>
             <Button size="small" color="primary">
               Favourite

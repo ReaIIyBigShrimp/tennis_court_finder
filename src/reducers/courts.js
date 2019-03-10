@@ -3,7 +3,8 @@ import ActionTypes from '../constants/ActionTypes';
 const initialState = {
     courts: [],
     filteredCourts: [],
-    activeCourt: null
+    activeCourt: null,
+    userLocation: []
 }
 
 export default function courts(state = initialState, action) {
@@ -27,6 +28,14 @@ export default function courts(state = initialState, action) {
         return {
           ...state,
           activeCourt: action.court
+        }
+      
+      case ActionTypes.SET_USER_LOCATION: 
+
+        console.log(action.payload);
+        return {
+          ...state,
+          userLocation: action.payload
         }
       default:
         return state

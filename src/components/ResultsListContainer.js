@@ -35,7 +35,7 @@ class ResultsListContainer extends Component {
 
   render() {
     return (
-      <ResultsList courtsToShow={this.state.filteredCourts}/>
+      <ResultsList />
     )
   }
 }

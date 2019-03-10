@@ -83,8 +83,11 @@ class Filters extends React.Component {
     let noLocation = () => {
       console.log("No user location found.");
     }
+    
     navigator.geolocation.getCurrentPosition((x) => {
+      // Send location to Redux store via action
       console.log(x);
+      this.props.setUserLocation(x);
     }, noLocation);
     
     let {courtCost, courtDistance, courts} = this.props;
@@ -102,9 +105,13 @@ class Filters extends React.Component {
       if (court.properties.freeAccess === true && courtCost === 'free') {
         isMatch = true;
       }
+      if (court.properties.freeAccess ===  false && courtCost === 'premium') {
+        isMatch = true;
+      }
       if (court.properties.freeAccess ===  true && courtCost === 'all') {
         isMatch = true;
       }
+      
       return isMatch === true;
     });
 
@@ -176,7 +183,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
       updateFilters: (filterValues) => { dispatch({type: 'UPDATE_FILTERS', payload: filterValues}) },
       addCourts: (courts) => { dispatch({type: 'ADD_COURTS', courts: courts })},
-      filterCourts: (filteredCourts) => {dispatch({type: 'FILTER_COURTS', payload: filteredCourts})}
+      filterCourts: (filteredCourts) => {dispatch({type: 'FILTER_COURTS', payload: filteredCourts})},
+      setUserLocation: (location) => {dispatch({type: 'SET_USER_LOCATION', payload: location})}
   }
 }
 

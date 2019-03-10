@@ -5,7 +5,9 @@ const ActionTypes = {
     ADD_COURTS: 'ADD_COURTS',
     FILTER_COURTS: 'FILTER_COURTS',
 
-    UPDATE_FILTERS: 'UPDATE_FILTERS'
+    UPDATE_FILTERS: 'UPDATE_FILTERS',
+
+    SET_USER_LOCATION: 'SET_USER_LOCATION'
 }
 
 export default ActionTypes;
