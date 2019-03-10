@@ -24,10 +24,15 @@ class Map extends React.Component {
                 attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 maxZoom: 18
             }).addTo(this.state.map);
+            if (this.props.activeCourt != null) {
+                this.state.map.setView(this.props.activeCourt.geometry.coordinates);
+            }
         });
         navigator.geolocation.getCurrentPosition((x) => {
             console.log(x);
         }, noLocation);
+
+        
         
         // Fetch JSON court data
         fetch('./tennis_courts.json',
@@ -46,8 +51,9 @@ class Map extends React.Component {
             })
             .catch(error => console.error(error));
     }
+
     addMarkers = () => {
-        this.state.courts.forEach(court => {
+        this.props.filteredCourts.forEach(court => {
             let courtObj = {};
             courtObj = court;
 
@@ -76,8 +82,9 @@ class Map extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        courts: state.courts,
-        activeCourt: state.activeCourt
+        courts: state.courts.courts,
+        activeCourt: state.courts.activeCourt,
+        filteredCourts: state.courts.filteredCourts
     }
 }
 

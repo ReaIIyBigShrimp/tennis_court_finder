@@ -24,15 +24,10 @@ const styles = {
 
 const ResultsList = (props) => {
   const { classes } = props;
-
-  let showCourt = (court) => {
-    console.log(court);
-  }
-
   let courts = props.filteredCourts;
   // map over filteredCourts
 
-  console.log(props.setActiveCourt);
+  console.log(props);
 
   let courtsList;
 
@@ -62,7 +57,7 @@ const ResultsList = (props) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary" onClick={() => {props.setActiveCourt(court)} }>
+            <Button size="small" color="primary" onClick={() => {props.setActiveCourt(court); } }>
               View on Map 
             </Button>
             <Button size="small" color="primary">
