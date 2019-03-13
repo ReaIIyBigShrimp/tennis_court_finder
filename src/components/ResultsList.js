@@ -9,6 +9,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import {Link} from 'react-router-dom';
+
 // Store
 import {connect} from 'react-redux';
 
@@ -57,7 +59,7 @@ const ResultsList = (props) => {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary" onClick={() => {props.setActiveCourt(court); } }>
+            <Button size="small" color="primary" component={Link} to='/map' onClick={() => {props.setActiveCourt(court) } }>
               View on Map 
             </Button>
             <Button size="small" color="primary">
