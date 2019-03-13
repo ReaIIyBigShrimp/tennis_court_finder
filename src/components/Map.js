@@ -15,6 +15,9 @@ class Map extends React.Component {
         let noLocation = () => {
             console.log("No user location found.");
         }
+        if (this.props.activeCourt == null) {
+            window.location.href = '/';
+        }
         // TO CHANGE (get location)
         // Remove hard coded location for production
         this.setState({
@@ -53,13 +56,23 @@ class Map extends React.Component {
     }
 
     addMarkers = () => {
+        let customTennisIcon = L.icon({
+            iconUrl: '/images/tennis_marker_01.svg',
+        
+            iconSize:     [38, 51], // size of the icon
+            iconAnchor:   [15, 35], // point of the icon which will correspond to marker's location
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
         this.props.filteredCourts.forEach(court => {
             let courtObj = {};
             courtObj = court;
 
-            let marker = L.marker(court.geometry.coordinates).addTo(this.state.map);
+            let marker = L.marker(court.geometry.coordinates, {icon: customTennisIcon}).addTo(this.state.map);
             marker.addEventListener('click', (court) => {this.props.setActiveCourt(courtObj)}, false);
         });
+
+        
     }
     // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {

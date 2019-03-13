@@ -43,7 +43,7 @@ const ResultsList = (props) => {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image="https://placeimg.com/640/480/any"
+              image={"./images/courts/"+ court.properties.id + ".jpg"}
               title="Court"
             />
             <CardContent>

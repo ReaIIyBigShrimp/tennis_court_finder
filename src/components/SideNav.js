@@ -13,6 +13,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import {Link} from 'react-router-dom';
 
+// Store
+import {connect} from 'react-redux';
+
 const styles = {
   list: {
     width: 250,
@@ -32,6 +35,7 @@ class TemporaryDrawer extends React.Component {
     left: false,
     bottom: false,
     right: false,
+
   };
 
   toggleDrawer = (side, open) => () => {
@@ -50,7 +54,7 @@ class TemporaryDrawer extends React.Component {
               <ListItemIcon><Icon>search</Icon></ListItemIcon>
               <ListItemText primary="Court Search" />
             </ListItem>
-            <ListItem button component={Link} to="./map">
+            <ListItem button component={Link} to="./map" disabled={this.props.activeCourt === null}>
               <ListItemIcon><Icon>place</Icon></ListItemIcon>
               <ListItemText primary="Map View"></ListItemText>
             </ListItem>
@@ -84,4 +88,12 @@ TemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+const mapStateToProps = (state) => {
+  return {
+      courts: state.courts,
+      activeCourt: state.courts.activeCourt,
+      filteredCourts: state.courts.filteredCourts
+  }
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(TemporaryDrawer));
