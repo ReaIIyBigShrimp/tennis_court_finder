@@ -14,11 +14,14 @@ Current functionality:<br>
 -Pan to location of selected court<br>
 -Directions for selected court<br>
 -Court filters for cost and distance<br>
+-Search filter for court map markers<br>
+-Details page for expanded court details view<br>
 
 In progress:<br>
 
--Details page for expanded court details view<br>
--Search filter for court map markers<br>
+-Court favouriting
+
+
 
 ###
 
