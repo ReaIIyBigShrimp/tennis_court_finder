@@ -19,7 +19,8 @@ Current functionality:<br>
 
 In progress:<br>
 
--Court favouriting
+-Court favouriting<br>
+-Distance from user for court listing
 
 
 
