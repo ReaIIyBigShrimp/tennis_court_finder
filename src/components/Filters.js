@@ -83,6 +83,45 @@ class Filters extends React.Component {
     let noLocation = () => {
       console.log("No user location found.");
     }
+
+    fetch('./tennis_courts.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(json => {
+      // Adds court data to state
+      console.log(json);
+      this.props.addCourts(json);
+
+      let newCourtsList = [];
+
+      newCourtsList = json.filter(court => {
+
+        let isMatch = false;
+
+        if (court.properties.freeAccess === true && courtCost === 'free') {
+          isMatch = true;
+        }
+        if (court.properties.freeAccess ===  false && courtCost === 'premium') {
+          isMatch = true;
+        }
+        if (court.properties.freeAccess ===  true && courtCost === 'all') {
+          isMatch = true;
+        }
+        
+        return isMatch === true;
+      });
+
+      console.log("Filtered list: ");
+      console.log(newCourtsList);
+      this.props.filterCourts(newCourtsList);
+    })
+    .catch(error => console.error(error));
+
+
     
     navigator.geolocation.getCurrentPosition((x) => {
       // Send location to Redux store via action
@@ -95,29 +134,6 @@ class Filters extends React.Component {
     //console.log(courtCost);
     //console.log(courtDistance);
     //console.log(courts);
-
-    let newCourtsList = [];
-
-    newCourtsList = courts.filter(court => {
-
-      let isMatch = false;
-
-      if (court.properties.freeAccess === true && courtCost === 'free') {
-        isMatch = true;
-      }
-      if (court.properties.freeAccess ===  false && courtCost === 'premium') {
-        isMatch = true;
-      }
-      if (court.properties.freeAccess ===  true && courtCost === 'all') {
-        isMatch = true;
-      }
-      
-      return isMatch === true;
-    });
-
-    console.log("Filtered list: ");
-    console.log(newCourtsList);
-    this.props.filterCourts(newCourtsList);
 
   }
 

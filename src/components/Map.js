@@ -35,7 +35,6 @@ class Map extends React.Component {
         navigator.geolocation.getCurrentPosition((x) => {
             console.log(x);
         }, noLocation);
-
     }
 
     componentDidUpdate(){

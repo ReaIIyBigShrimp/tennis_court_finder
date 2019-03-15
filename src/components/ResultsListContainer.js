@@ -6,19 +6,7 @@ import {connect} from 'react-redux';
 class ResultsListContainer extends Component {
 
   componentDidMount = () => {
-    fetch('./tennis_courts.json', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(json => {
-        // Adds court data to state
-        console.log(json);
-        this.props.addCourts(json);
-      })
-      .catch(error => console.error(error));
+    
   }
 
   render() {
