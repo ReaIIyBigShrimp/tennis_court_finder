@@ -11,13 +11,14 @@ class Map extends React.Component {
             test: null
         };
     }
+
     componentDidMount = () => {
         let noLocation = () => {
             console.log("No user location found.");
         }
-        if (this.props.activeCourt == null) {
+        /* if (this.props.activeCourt == null) {
             window.location.href = '/';
-        }
+        } */
         // TO CHANGE (get location)
         // Remove hard coded location for production
         this.setState({
@@ -35,24 +36,10 @@ class Map extends React.Component {
             console.log(x);
         }, noLocation);
 
-        
-        
-        // Fetch JSON court data
-        fetch('./tennis_courts.json',
-        {
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(json => {
-                // Adds court data to state
-                this.setState({courts: json});
+    }
 
-                this.addMarkers();
-            })
-            .catch(error => console.error(error));
+    componentDidUpdate(){
+        this.addMarkers();
     }
 
     addMarkers = () => {

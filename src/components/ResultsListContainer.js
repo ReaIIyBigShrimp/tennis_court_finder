@@ -5,15 +5,6 @@ import {connect} from 'react-redux';
 
 class ResultsListContainer extends Component {
 
-  constructor(props){
-    super(props);
-
-    this.state = {
-      courts: [],
-      filteredCourts: []
-    };
-  }
-
   componentDidMount = () => {
     fetch('./tennis_courts.json', {
         headers: {
@@ -24,9 +15,6 @@ class ResultsListContainer extends Component {
       .then(response => response.json())
       .then(json => {
         // Adds court data to state
-        this.setState({
-          courts: json
-        });
         console.log(json);
         this.props.addCourts(json);
       })
