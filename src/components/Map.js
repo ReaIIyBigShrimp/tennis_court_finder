@@ -68,7 +68,7 @@ class Map extends React.Component {
     }
     render() {
         console.log(this.props);
-        console.log(this.props.courts.activeCourt);
+        console.log(this.props.activeCourt);
         return (
             <div className="map-container">
                 <div id="map">
