@@ -157,7 +157,17 @@ class Filters extends React.Component {
           
           return court
         });
-  
+
+        newCourtsList = newCourtsList.filter(court => {
+          let withinRange = false;
+
+          if(court.distanceToUser <= courtDistance){
+            withinRange = true;
+          }
+
+          return withinRange === true;
+        })
+        
         console.log("Filtered list: ");
         console.log(newCourtsList);
         this.props.filterCourts(newCourtsList);
