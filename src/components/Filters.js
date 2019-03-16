@@ -166,7 +166,9 @@ class Filters extends React.Component {
           }
 
           return withinRange === true;
-        })
+        });
+        // Sort courts with nearest first
+        newCourtsList.sort((courtA, courtB) => parseFloat(courtA.distanceToUser) - parseFloat(courtB.distanceToUser));
         
         console.log("Filtered list: ");
         console.log(newCourtsList);
