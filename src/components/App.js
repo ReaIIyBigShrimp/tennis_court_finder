@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Map from './Map';
-import Court from './Court';
 import Search from './Search';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -40,7 +39,6 @@ class App extends Component {
               exact path='/map'
               render={(props) => <Map />}
             />
-            <Route path='/court' component={Court} />
           </div>
         </MuiThemeProvider>
       </BrowserRouter>

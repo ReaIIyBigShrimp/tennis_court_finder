@@ -32,10 +32,11 @@ export default function courts(state = initialState, action) {
       
       case ActionTypes.SET_USER_LOCATION: 
 
-        console.log(action.payload);
+        console.log(action.payload.coords.latitude);
+        console.log(action.payload.coords.longitude);
         return {
           ...state,
-          userLocation: action.payload
+          userLocation: [action.payload.coords.latitude, action.payload.coords.longitude]
         }
       default:
         return state

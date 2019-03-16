@@ -51,6 +51,9 @@ const ResultsList = (props) => {
                 {court.properties.name}
               </Typography>
               <Typography gutterBottom component="p">
+                {court.distanceToUser.toFixed(1)} miles away
+              </Typography>
+              <Typography gutterBottom component="p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </Typography>
               <Typography gutterBottom component="p">

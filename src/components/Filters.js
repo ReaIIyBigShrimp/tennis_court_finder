@@ -78,58 +78,94 @@ class Filters extends React.Component {
     });
   };
 
+  // Formula for calculating the distance between two points
+  // https://www.geodatasource.com/developers/javascript
+  calculateDistance = (lat1, lon1, lat2, lon2, unit) => {
+    if ((lat1 === lat2) && (lon1 === lon2)) {
+      return 0;
+    }
+    else {
+      var radlat1 = Math.PI * lat1/180;
+      var radlat2 = Math.PI * lat2/180;
+      var theta = lon1-lon2;
+      var radtheta = Math.PI * theta/180;
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+        dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = dist * 180/Math.PI;
+      dist = dist * 60 * 1.1515;
+      if (unit==="K") { dist = dist * 1.609344 }
+      if (unit==="N") { dist = dist * 0.8684 }
+      return dist;
+    }
+  }
+
   applyFilters = () => {
-    // get user location
+    let {courtCost, courtDistance, courts} = this.props;
+    
+    // Logs if no location is found
     let noLocation = () => {
       console.log("No user location found.");
     }
 
-    fetch('./tennis_courts.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(json => {
-      // Adds court data to state
-      console.log(json);
-      this.props.addCourts(json);
-
-      let newCourtsList = [];
-
-      newCourtsList = json.filter(court => {
-
-        let isMatch = false;
-
-        if (court.properties.freeAccess === true && courtCost === 'free') {
-          isMatch = true;
-        }
-        if (court.properties.freeAccess ===  false && courtCost === 'premium') {
-          isMatch = true;
-        }
-        if (court.properties.freeAccess ===  true && courtCost === 'all') {
-          isMatch = true;
-        }
-        
-        return isMatch === true;
-      });
-
-      console.log("Filtered list: ");
-      console.log(newCourtsList);
-      this.props.filterCourts(newCourtsList);
-    })
-    .catch(error => console.error(error));
-
-
-    
+    // Finds location then checks form filters for matching courts
     navigator.geolocation.getCurrentPosition((x) => {
       // Send location to Redux store via action
-      console.log(x);
+      // action takes position object
       this.props.setUserLocation(x);
+      fetch('./tennis_courts.json', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        // Adds court data to state
+        console.log(json);
+        this.props.addCourts(json);
+        
+        let newCourtsList = [];
+  
+        newCourtsList = json.filter(court => {
+  
+          let isMatch = false;
+  
+          if (court.properties.freeAccess === true && courtCost === 'free') {
+            isMatch = true;
+          }
+          if (court.properties.freeAccess ===  false && courtCost === 'premium') {
+            isMatch = true;
+          }
+          if (court.properties.freeAccess ===  true && courtCost === 'all') {
+            isMatch = true;
+          }
+          
+          return isMatch === true;
+        });
+
+        newCourtsList.map(court => {
+          court.distanceToUser = this.calculateDistance(
+            x.coords.latitude,
+            x.coords.longitude,
+            court.geometry.coordinates[0],
+            court.geometry.coordinates[1],
+            "M"
+            );
+          
+          return court
+        });
+  
+        console.log("Filtered list: ");
+        console.log(newCourtsList);
+        this.props.filterCourts(newCourtsList);
+      })
+      .catch(error => console.error(error));
     }, noLocation);
     
-    let {courtCost, courtDistance, courts} = this.props;
+    
 
     //console.log(courtCost);
     //console.log(courtDistance);
