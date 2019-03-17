@@ -58,8 +58,8 @@ const ranges = [
 
 class Filters extends React.Component {
   state = {
-    courtCost: 'all',
-    courtDistance: '0-20'
+    courtCost: 'free',
+    courtDistance: 1000
   };
 
   handleChange = event => {
@@ -115,6 +115,7 @@ class Filters extends React.Component {
       // Send location to Redux store via action
       // action takes position object
       this.props.setUserLocation(x);
+      console.log(x);
       fetch('./tennis_courts.json', {
         headers: {
           'Content-Type': 'application/json',
@@ -147,14 +148,18 @@ class Filters extends React.Component {
         });
 
         newCourtsList.map(court => {
-          court.distanceToUser = this.calculateDistance(
+          console.log(x.coords.latitude);
+          console.log(x.coords.longitude);          
+          console.log(court.distanceToUser = this.calculateDistance(
             x.coords.latitude,
             x.coords.longitude,
             court.geometry.coordinates[0],
-            court.geometry.coordinates[1],
-            "M"
-            );
-          
+            court.geometry.coordinates[1]
+            ));
+
+
+
+
           return court
         });
 
