@@ -51,6 +51,10 @@ const ranges = [
       label: '< 20',
     },
     {
+      value: 50,
+      label: '< 50'
+    },
+    {
       value: 1000,
       label: 'Any',
     },
@@ -108,6 +112,7 @@ class Filters extends React.Component {
     // Logs if no location is found
     let noLocation = () => {
       console.log("No user location found.");
+      alert("Error: No location found");
     }
 
     // Finds location then checks form filters for matching courts
@@ -129,11 +134,9 @@ class Filters extends React.Component {
         this.props.addCourts(json);
         
         let newCourtsList = [];
-  
+
         newCourtsList = json.filter(court => {
-  
           let isMatch = false;
-  
           if (court.properties.freeAccess === true && courtCost === 'free') {
             isMatch = true;
           }
@@ -156,9 +159,6 @@ class Filters extends React.Component {
             court.geometry.coordinates[0],
             court.geometry.coordinates[1]
             ));
-
-
-
 
           return court
         });
