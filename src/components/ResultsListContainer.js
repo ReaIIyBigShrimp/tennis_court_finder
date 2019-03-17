@@ -4,11 +4,6 @@ import ResultsList from './ResultsList';
 import {connect} from 'react-redux';
 
 class ResultsListContainer extends Component {
-
-  componentDidMount = () => {
-    
-  }
-
   render() {
     return (
       <ResultsList />

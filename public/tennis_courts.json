@@ -5,6 +5,7 @@
         },
         "properties": {
             "id": 1,
+            "description": "Greenhead Park is an urban park located 0.5 miles (0.80 km) west of the town centre of Huddersfield, West Yorkshire, England. It is one of the largest parks in Huddersfield and was originally opened in 1884. It is an English Heritage grade II listed property and is also in a Conservation Area.",
             "name": "Greenhead Park",
             "freeAccess": true,
             "numOfCourts": 9,
@@ -18,6 +19,7 @@
         },
         "properties": {
             "id": 2,
+            "description": "This Local Nature Reserve and urban park is situated off Beechwood Drive within walking distance of a number of schools in North Halifax.",
             "name": "Beechwood Park",
             "freeAccess": true,
             "numOfCourts": 2,

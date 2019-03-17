@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Filters from './Filters';
 import Grid from '@material-ui/core/Grid';
 import ResultsListContainer from './ResultsListContainer';
@@ -6,20 +6,29 @@ import ResultsListContainer from './ResultsListContainer';
 class Search extends Component {
   render() {
     return (
-      <Grid
+      <Fragment>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+        >
+          <Grid item xs={12} >
+            <Filters />
+          </Grid>   
+        </Grid> 
+        <Grid 
         container
         spacing={0}
-        direction="column"
+        direction="row"
         alignItems="center"
-        justify="center"
-      >
-        <Grid item xs={12} >
-          <Filters />
-        </Grid>   
-        <Grid item xs={12}>
+        justify="center" 
+        >
           <ResultsListContainer/>
         </Grid>
-      </Grid> 
+      </Fragment>
+      
     )
   }
 }
