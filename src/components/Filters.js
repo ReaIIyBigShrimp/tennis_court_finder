@@ -143,6 +143,9 @@ class Filters extends React.Component {
           if (court.properties.freeAccess ===  false && courtCost === 'premium') {
             isMatch = true;
           }
+          if (court.properties.freeAccess ===  false && courtCost === 'all') {
+            isMatch = true;
+          }
           if (court.properties.freeAccess ===  true && courtCost === 'all') {
             isMatch = true;
           }
