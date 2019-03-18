@@ -45,7 +45,7 @@ const ResultsList = (props) => {
     courtsList = courts.map(court => {
       console.log(props.setActiveCourt);
       return (
-        <Grid item xs={12} sm={6} lg={4} key={court.properties.id}>
+        <Grid item xs={12} sm={6} lg={3} key={court.properties.id}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
