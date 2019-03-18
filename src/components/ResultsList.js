@@ -23,6 +23,9 @@ const styles = {
   },
   media: {
     height: 140,
+  },
+  panel: {
+    height: 175
   }
 };
 
@@ -49,7 +52,7 @@ const ResultsList = (props) => {
                 image={"./images/courts/"+ court.properties.id + ".jpg"}
                 title="Court"
               />
-              <CardContent>
+              <CardContent className={classes.panel}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {court.properties.name}
                 </Typography>
@@ -57,7 +60,7 @@ const ResultsList = (props) => {
                   {court.distanceToUser.toFixed(1)} miles away
                 </Typography>
                 <Typography gutterBottom component="p">
-                  {court.properties.description}
+                  {court.properties.description.substring(0,150)}...
                 </Typography>
                 <Typography gutterBottom component="p">
                   Numbers of courts: {court.properties.numOfCourts}
@@ -82,9 +85,9 @@ const ResultsList = (props) => {
     <Grid 
       container
       spacing={0}
-      direction="column"
+      direction="row"
       alignItems="center"
-      justify="center" 
+      justify="space-around"
       >
       {courtsList}
     </Grid>
