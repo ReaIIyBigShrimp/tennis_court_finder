@@ -21,7 +21,7 @@ class Search extends Component {
         <Grid 
         container
         spacing={0}
-        direction="row"
+        direction="column"
         alignItems="center"
         justify="center" 
         >

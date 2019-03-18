@@ -19,7 +19,8 @@ import {connect} from 'react-redux';
 const styles = {
   card: {
     maxWidth: 345,
-    margin: '0px 0px 10px 0px'
+    margin: 'auto',
+    marginBottom: '10px'
   },
   media: {
     height: 140,
@@ -44,7 +45,7 @@ const ResultsList = (props) => {
     courtsList = courts.map(court => {
       console.log(props.setActiveCourt);
       return (
-        <Grid item xs={12} sm={6} key={court.properties.id}>
+        <Grid item xs={12} sm={6} lg={4} key={court.properties.id}>
           <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
@@ -87,7 +88,7 @@ const ResultsList = (props) => {
       spacing={0}
       direction="row"
       alignItems="center"
-      justify="space-around"
+      justify="center"
       >
       {courtsList}
     </Grid>
