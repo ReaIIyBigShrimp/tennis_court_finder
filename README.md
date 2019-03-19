@@ -16,13 +16,11 @@ Current functionality:<br>
 -Court filters for cost and distance<br>
 -Search filter for court map markers<br>
 -Details page for expanded court details view<br>
+-Distance from user for court listing<br>
 
 In progress:<br>
 
 -Court favouriting<br>
--Distance from user for court listing
-
-
 
 ###
 
