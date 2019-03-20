@@ -57,8 +57,6 @@ class Map extends React.Component {
             let marker = L.marker(court.geometry.coordinates, {icon: customTennisIcon}).addTo(this.state.map);
             marker.addEventListener('click', (court) => {this.props.setActiveCourt(courtObj)}, false);
         });
-
-        
     }
     // Uses selected court's coordinates to pan to its marker on the map
     panToCourtPosition = () => {

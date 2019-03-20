@@ -180,6 +180,12 @@ class Filters extends React.Component {
         
         console.log("Filtered list: ");
         console.log(newCourtsList);
+
+        // Limit to 10 results
+        if(newCourtsList.length > 10) {
+          newCourtsList = newCourtsList.slice(0,10);
+        }
+
         this.props.filterCourts(newCourtsList);
       })
       .catch(error => console.error(error));
@@ -190,7 +196,10 @@ class Filters extends React.Component {
     //console.log(courtCost);
     //console.log(courtDistance);
     //console.log(courts);
+  }
 
+  componentDidMount = () => {
+    localStorage.setItem('test', "Data");
   }
 
   render() {
