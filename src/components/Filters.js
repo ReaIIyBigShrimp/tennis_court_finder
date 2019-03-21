@@ -107,7 +107,7 @@ class Filters extends React.Component {
   }
 
   applyFilters = () => {
-    let {courtCost, courtDistance, courts} = this.props;
+    let {courtCost, courtDistance} = this.props;
     
     // Logs if no location is found
     let noLocation = () => {

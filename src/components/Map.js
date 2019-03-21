@@ -12,6 +12,12 @@ class Map extends React.Component {
         };
     }
 
+    componentWillMount = () => {
+        if (this.props.activeCourt == null) {
+            window.location.href = '/'
+        }
+    }
+
     componentDidMount = () => {
         let noLocation = () => {
             console.log("No user location found.");
@@ -39,6 +45,10 @@ class Map extends React.Component {
 
     componentDidUpdate(){
         this.addMarkers();
+
+        let historyState = {activeCourt: this.props.activeCourt};
+        window.history.pushState(historyState, null, '/map');
+        
     }
 
     addMarkers = () => {
@@ -67,6 +77,7 @@ class Map extends React.Component {
     render() {
         console.log(this.props);
         console.log(this.props.activeCourt);
+        console.log(window.history.state);
         return (
             <div className="map-container">
                 <div id="map">
