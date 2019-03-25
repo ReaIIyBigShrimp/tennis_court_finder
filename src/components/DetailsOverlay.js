@@ -6,14 +6,18 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { Typography } from '@material-ui/core';
 // import blueGrey from '@material-ui/core/colors/blueGrey';
+
+import Grid from '@material-ui/core/Grid';
+
 import {connect} from 'react-redux';
 
 const card = {
-    minWidth: '400px',
+    minWidth: '350px',
+    maxWidth: '400px',
     position: 'absolute',
     zIndex: 500,
-    bottom: '20px',
-    left: '5px'
+    bottom: '25px',
+    left: '1px'
 }
 
 const panelLink = {
@@ -38,16 +42,42 @@ function DetailsOverlay(props) {
       <React.Fragment>
           <Card style={card}>
             <CardContent>
-                <Typography variant="h4" color="textSecondary" gutterBottom>
-                    {courts.activeCourt != null ? console.log(courts.activeCourt.properties.name) : console.log("Nothing")}
-                    {courts.activeCourt != null ? courts.activeCourt.properties.name : 'Select a court'}
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
+                <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="flex-start"
+                justify="center"
+                >
+                    <Grid item>
+                        <Typography variant="h4" color="textSecondary" gutterBottom>
+                            {courts.activeCourt != null ? console.log(courts.activeCourt.properties.name) : console.log("Nothing")}
+                            {courts.activeCourt != null ? courts.activeCourt.properties.name : 'Select a court'}
+                        </Typography>
+                    </Grid>
+                </Grid>
                 
-                    {courts.activeCourt != null ? "Number of courts: " + courts.activeCourt.properties.numOfCourts : ''}
-                </Typography>
+                <Grid
+                container
+                spacing={8}
+                direction="row"
+                alignItems="center"
+                justify="flex-start"
+                >
+                    <Grid item>
+                        <Typography color="textSecondary" gutterBottom>
+                            {courts.activeCourt != null ? "Number of courts: " + courts.activeCourt.properties.numOfCourts : ''}
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography color="textSecondary" gutterBottom>
+                            {courts.activeCourt != null ? "Surface(s): " + courtSurfaces : ''}
+                        </Typography>
+                    </Grid>
+                </Grid>
+                
                 <Typography color="textSecondary" gutterBottom>
-                    {courts.activeCourt != null ? "Surface(s): " + courtSurfaces : ''}
+                    {courts.activeCourt != null ? courts.activeCourt.properties.description : ''}
                 </Typography>
             </CardContent>
             <CardActions>
