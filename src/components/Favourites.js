@@ -16,13 +16,22 @@ import { Icon } from '@material-ui/core';
 
 
 class Favourites extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            favouriteCourts: JSON.parse(localStorage.getItem('favouriteCourts'))
+        }
+    }
+
 
     removeFavourite = (id) => {
-        let favourites = JSON.parse(localStorage.getItem('favouriteCourts'));
-
+        //let favourites = JSON.parse(localStorage.getItem('favouriteCourts'));
+        let favourites = this.state.favouriteCourts;
         let editedFavourites = favourites.filter((court) => {
             return (court.properties.id !== id)
         });
+        this.setState({favouriteCourts: editedFavourites});
         localStorage.setItem('favouriteCourts',JSON.stringify(editedFavourites));
     }
 
@@ -30,7 +39,9 @@ class Favourites extends Component {
 
     let results;
 
-    let favouriteCourts = JSON.parse(localStorage.getItem('favouriteCourts'));
+    //let favouriteCourts = JSON.parse(localStorage.getItem('favouriteCourts'));
+
+    let favouriteCourts = this.state.favouriteCourts;
     
     if (favouriteCourts != null) {
         results = favouriteCourts.map(favourite => {
