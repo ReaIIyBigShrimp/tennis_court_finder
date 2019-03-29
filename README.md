@@ -17,10 +17,12 @@ Current functionality:<br>
 -Search filter for court map markers<br>
 -Details page for expanded court details view<br>
 -Distance from user for court listing<br>
+-Court favouriting<br>
 
 In progress:<br>
 
--Court favouriting<br>
+-None<br>
+All proposed functionality completed.<br>
 
 ###
 
