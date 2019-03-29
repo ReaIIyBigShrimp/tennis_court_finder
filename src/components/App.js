@@ -5,6 +5,7 @@ import Map from './Map';
 import Search from './Search';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Favourites from './Favourites';
 // import teal from '@material-ui/core/colors/teal';
 
 const theme = createMuiTheme({
@@ -39,6 +40,7 @@ class App extends Component {
               exact path='/map'
               render={(props) => <Map />}
             />
+            <Route exact path='/favourites' component={Favourites}/>
           </div>
         </MuiThemeProvider>
       </BrowserRouter>

@@ -54,6 +54,10 @@ class TemporaryDrawer extends React.Component {
               <ListItemIcon><Icon>search</Icon></ListItemIcon>
               <ListItemText primary="Court Search" />
             </ListItem>
+            <ListItem button component={Link} to="/favourites">
+              <ListItemIcon><Icon>favorite</Icon></ListItemIcon>
+              <ListItemText primary="Favourites" />
+            </ListItem>
             {/* <ListItem button component={Link} to="./map" disabled={this.props.activeCourt === null}>
               <ListItemIcon><Icon>place</Icon></ListItemIcon>
               <ListItemText primary="Map View"></ListItemText>

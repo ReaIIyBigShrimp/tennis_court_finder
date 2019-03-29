@@ -30,6 +30,22 @@ const styles = {
   }
 };
 
+let addToFavourites = (courtToAdd) => {
+  let favouriteCourts = [];
+  if(localStorage.getItem('favouriteCourts')){
+    favouriteCourts = JSON.parse(localStorage.getItem('favouriteCourts'));
+    console.log(localStorage.getItem('favouriteCourts'));
+    // Remove old list
+    //localStorage.removeItem('favouriteCourts');
+  }
+
+  favouriteCourts.push(courtToAdd);
+
+  // Add updated favourite list
+  localStorage.setItem('favouriteCourts', JSON.stringify(favouriteCourts));
+  console.log(localStorage.getItem('favouriteCourts'));
+}
+
 const ResultsList = (props) => {
   const { classes } = props;
   let courts = props.filteredCourts;
@@ -72,7 +88,7 @@ const ResultsList = (props) => {
               <Button size="small" color="primary" component={Link} to='/map' onClick={() => {props.setActiveCourt(court) } }>
                 View on Map 
               </Button>
-              <Button size="small" color="primary">
+              <Button size="small" color="primary" onClick={() => {addToFavourites(court)}}>
                 Favourite
               </Button>
             </CardActions>
