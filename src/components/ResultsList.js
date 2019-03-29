@@ -41,8 +41,11 @@ let addToFavourites = (courtToAdd) => {
 
   favouriteCourts.push(courtToAdd);
 
+  let deDupedFavourites = favouriteCourts.filter((elem, index, self) => self.findIndex(
+    (courtX) => {return (courtX.properties.id === elem.properties.id && courtX.properties.id === elem.properties.id)}) === index)
+
   // Add updated favourite list
-  localStorage.setItem('favouriteCourts', JSON.stringify(favouriteCourts));
+  localStorage.setItem('favouriteCourts', JSON.stringify(deDupedFavourites));
   console.log(localStorage.getItem('favouriteCourts'));
 }
 
