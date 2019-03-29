@@ -13,7 +13,13 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { Icon } from '@material-ui/core';
 
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
+
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 const styles = {
     clearBtn: {
@@ -62,6 +68,9 @@ class Favourites extends Component {
                             primary={favourite.properties.name}
                             secondary={"No. of courts: " + favourite.properties.numOfCourts}
                         />
+                        <Button size="small" color="primary" component={Link} to='/map' onClick={() => {this.props.setActiveCourt(favourite) } }>
+                            View on Map 
+                        </Button>
                         <ListItemSecondaryAction className={classes.clearBtn}>
                             <IconButton aria-label="Delete" onClick={() => {this.removeFavourite(favourite.properties.id)}}>
                                 <ListItemIcon><Icon>clear</Icon></ListItemIcon>
@@ -99,4 +108,22 @@ class Favourites extends Component {
   }
 }
 
-export default withStyles(styles)(Favourites);
+const mapStateToProps = (state) => {
+    return {
+        courts: state.courts,
+        filteredCourts: state.courts.filteredCourts,
+        activeCourt: state.courts.activeCourt
+    }
+  }
+  
+  Favourites.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        setActiveCourt: (court) => { dispatch({type: 'SET_ACTIVE_COURT', court: court}) }
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Favourites));

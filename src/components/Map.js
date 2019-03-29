@@ -60,6 +60,10 @@ class Map extends React.Component {
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
 
+        if(this.props.filteredCourts.length < 1 && this.props.activeCourt != null){
+            L.marker(this.props.activeCourt.geometry.coordinates, {icon: customTennisIcon}).addTo(this.state.map);
+        }
+
         this.props.filteredCourts.forEach(court => {
             let courtObj = {};
             courtObj = court;
