@@ -13,7 +13,17 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { Icon } from '@material-ui/core';
 
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+    clearBtn: {
+        position: 'absolute',
+        right: '-30px'
+    },
+    titleFavourites: {
+        marginTop: '10px'
+    }
+}
 
 class Favourites extends Component {
     constructor(props){
@@ -36,7 +46,7 @@ class Favourites extends Component {
     }
 
   render() {
-
+    const { classes } = this.props;
     let results;
 
     //let favouriteCourts = JSON.parse(localStorage.getItem('favouriteCourts'));
@@ -52,7 +62,7 @@ class Favourites extends Component {
                             primary={favourite.properties.name}
                             secondary={"No. of courts: " + favourite.properties.numOfCourts}
                         />
-                        <ListItemSecondaryAction>
+                        <ListItemSecondaryAction className={classes.clearBtn}>
                             <IconButton aria-label="Delete" onClick={() => {this.removeFavourite(favourite.properties.id)}}>
                                 <ListItemIcon><Icon>clear</Icon></ListItemIcon>
                             </IconButton>
@@ -73,7 +83,7 @@ class Favourites extends Component {
           justify="center"
         >
           <Grid item xs={12} >
-            <Typography variant="h6">
+            <Typography variant="h6" className={classes.titleFavourites}>
               Favourites
             </Typography>
           </Grid>   
@@ -89,4 +99,4 @@ class Favourites extends Component {
   }
 }
 
-export default Favourites;
+export default withStyles(styles)(Favourites);
