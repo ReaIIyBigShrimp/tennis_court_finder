@@ -1,3 +1,5 @@
+Live app: https://tennis-court-finder.herokuapp.com/<br>
+
 Allows users find nearby tennis courts using their geolocation data.<br>
 
 Technologies used:<br>
@@ -18,11 +20,6 @@ Current functionality:<br>
 -Details page for expanded court details view<br>
 -Distance from user for court listing<br>
 -Court favouriting<br>
-
-In progress:<br>
-
--None<br>
-All proposed functionality completed.<br>
 
 ###
 
