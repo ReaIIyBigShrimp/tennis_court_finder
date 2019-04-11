@@ -9,6 +9,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+//Snackbar
+import Snackbar from './Snackbar.js';
+
 import Grid from '@material-ui/core/Grid';
 
 import {Link} from 'react-router-dom';
@@ -30,6 +33,8 @@ const styles = {
   }
 };
 
+// Now used in Snackbar component
+// Can remove
 let addToFavourites = (courtToAdd) => {
   let favouriteCourts = [];
   if(localStorage.getItem('favouriteCourts')){
@@ -91,9 +96,7 @@ const ResultsList = (props) => {
               <Button size="small" color="primary" component={Link} to='/map' onClick={() => {props.setActiveCourt(court) } }>
                 View on Map 
               </Button>
-              <Button size="small" color="primary" onClick={() => {addToFavourites(court)}}>
-                Favourite
-              </Button>
+              <Snackbar court={court}/>
             </CardActions>
           </Card>
         </Grid>
