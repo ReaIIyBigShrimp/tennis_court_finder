@@ -1,0 +1,72 @@
+[
+    {
+        "geometry": {
+            "coordinates": [53.649331, -1.800321]
+        },
+        "properties": {
+            "id": 1,
+            "description": "Greenhead Park is an urban park located 0.5 miles (0.80 km) west of the town centre of Huddersfield, West Yorkshire, England. It is one of the largest parks in Huddersfield and was originally opened in 1884. It is an English Heritage grade II listed property and is also in a Conservation Area.",
+            "name": "Greenhead Park",
+            "freeAccess": true,
+            "numOfCourts": 9,
+            "surfaces": ["Asphalt"],
+            "disabledAccess": true
+        }
+    },
+    {
+        "geometry": {
+            "coordinates": [53.751540, -1.877280]
+        },
+        "properties": {
+            "id": 2,
+            "description": "This Local Nature Reserve and urban park is situated off Beechwood Drive within walking distance of a number of schools in North Halifax.",
+            "name": "Beechwood Park",
+            "freeAccess": true,
+            "numOfCourts": 2,
+            "surfaces": ["Asphalt"],
+            "disabledAccess": true
+        }
+    },
+    {
+        "geometry": {
+            "coordinates": [53.712960, -1.897762]
+        },
+        "properties": {
+            "id": 3,
+            "description": "This is a public park in the centre of Sowerby Bridge. Features include a bowling green and tennis courts. The war memorial is a large stone arched entrance bearing bronze commemorative plaques.",
+            "name": "Crow Wood Park",
+            "freeAccess": true,
+            "numOfCourts": 2,
+            "surfaces": ["Asphalt"],
+            "disabledAccess": true
+        }
+    },
+    {
+        "geometry": {
+            "coordinates": [53.713952, -1.868651]
+        },
+        "properties": {
+            "id": 4,
+            "description": "This well established club offers great facilities within a friendly and welcoming atmosphere.",
+            "name": "Queens Sports Club",
+            "freeAccess": false,
+            "numOfCourts": 8,
+            "surfaces": ["Asphalt","Artificial grass"],
+            "disabledAccess": true
+        }
+    },
+    {
+        "geometry": {
+            "coordinates": [53.652802, -1.792990]
+        },
+        "properties": {
+            "id": 5,
+            "description": "Large sports club in Huddersfield offering tennis, padel tennis, squash, fitness and social. 4 indoor and 6 outdoor tennis courts alongside 2 padel courts.",
+            "name": "Huddersfield Lawn & Squash Club",
+            "freeAccess": false,
+            "numOfCourts": 10,
+            "surfaces": ["Asphalt","Artificial grass","Acrylic"],
+            "disabledAccess": true
+        }
+    }
+]
