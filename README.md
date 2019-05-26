@@ -1,3 +1,5 @@
+Status: Project Completed<br>
+
 Live app: https://tennis-court-finder.herokuapp.com/<br>
 
 Allows users find nearby tennis courts using their geolocation data.<br>
