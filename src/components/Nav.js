@@ -15,11 +15,16 @@ const styles = {
   },
   grow: {
     flexGrow: 1,
+    fontSize: '0.9em',
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+  sourceLink: {
+    fontSize: '0.7em',
+    opacity: 0.75,
+  }
 };
 
 function Nav(props) {
@@ -32,7 +37,7 @@ function Nav(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Find Local Tennis Courts
           </Typography>
-          <Button color="inherit" href="http://github.com/reaiiybigshrimp/tennis_court_finder">Source Code(GitHub)</Button>
+          <Button color="inherit" href="http://github.com/reaiiybigshrimp/tennis_court_finder" className={classes.sourceLink}>Source Code(GitHub)</Button>
         </Toolbar>
         
       </AppBar>
